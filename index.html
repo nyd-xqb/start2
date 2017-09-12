@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="聂玉东">
+    <title>相册</title>
+    <!-- 引入脚本文件 -->
+    <script src="scripts/libs/jquery.js"></script>
+    <script src="scripts/libs/fancybox/jquery.fancybox.js"></script>
+    <script src="scripts/libs/fancybox/helpers/jquery.fancybox-buttons.js"></script>
+    <script src="scripts/libs/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+    <!-- 引入css样式 -->
+    <link rel="stylesheet" href="scripts/libs/fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" href="scripts/libs/fancybox/helpers/jquery.fancybox-buttons.css">
+    <link rel="stylesheet" href="scripts/libs/fancybox/helpers/jquery.fancybox-thumbs.css">
+    <style>
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            /* border: 3px solid #FF3333; */
+            background-image: url(images/22.jpg);
+            background-size: 100%;
+            overflow: hidden;
+        }
+
+        .xc div {
+            width: 100px;
+            height: 100px;
+            border: 10px solid snow;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .xc div a {
+            display: block;
+            width: 100px;
+            height: 100px;
+            text-indent: -100px;
+            overflow: hidden;
+        }
+
+        .xc div:hover {
+            transform: scale(1.5) !important;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="xc">
+        <div style="background-image: url(images/thumbs/0.jpg)">
+            <a href="images/0.jpg" rel="grounp">0</a>
+        </div>
+        <div style="background-image: url(images/thumbs/1.jpg)">
+            <a href="images/1.jpg" rel="grounp">1</a>
+        </div>
+        <div style="background-image: url(images/thumbs/2.jpg)">
+            <a href="images/2.jpg" rel="grounp">2</a>
+        </div>
+        <div style="background-image: url(images/thumbs/3.jpg)">
+            <a href="images/3.jpg" rel="grounp">3</a>
+        </div>
+        <div style="background-image: url(images/thumbs/4.jpg)">
+            <a href="images/4.jpg" rel="grounp">4</a>
+        </div>
+        <div style="background-image: url(images/thumbs/6.jpg)">
+            <a href="images/5.jpg" rel="grounp">5</a>
+        </div>
+        <div style="background-image: url(images/thumbs/6.jpg)">
+            <a href="images/6.jpg" rel="grounp">6</a>
+        </div>
+        <div style="background-image: url(images/thumbs/7.jpg)">
+            <a href="images/7.jpg" rel="grounp">7</a>
+        </div>
+        <div style="background-image: url(images/thumbs/8.jpg)">
+            <a href="images/8.jpg" rel="grounp">8</a>
+        </div>
+        <div style="background-image: url(images/thumbs/9.jpg)">
+            <a href="images/9.jpg" rel="grounp">9</a>
+        </div>
+        <div style="background-image: url(images/thumbs/10.jpg)">
+            <a href="images/10.jpg" rel="grounp">10</a>
+        </div>
+        <div style="background-image: url(images/thumbs/11.jpg)">
+            <a href="images/11.jpg" rel="grounp">11</a>
+        </div>
+        <div style="background-image: url(images/thumbs/12.jpg)">
+            <a href="images/12.jpg" rel="grounp">12</a>
+        </div>
+        <div style="background-image: url(images/thumbs/13.jpg)">
+            <a href="images/13.jpg" rel="grounp">13</a>
+        </div>
+        <div style="background-image: url(images/thumbs/14.jpg)">
+            <a href="images/14.jpg" rel="grounp">14</a>
+        </div>
+        <div style="background-image: url(images/thumbs/15.jpg)">
+            <a href="images/15.jpg" rel="grounp">14</a>
+        </div>
+        <div style="background-image: url(images/thumbs/16.jpg)">
+            <a href="images/16.jpg" rel="grounp">16</a>
+        </div>
+        <div style="background-image: url(images/thumbs/17.jpg)">
+            <a href="images/17.jpg" rel="grounp">17</a>
+        </div>
+        <div style="background-image: url(images/thumbs/18.jpg)">
+            <a href="images/18.jpg" rel="grounp">18</a>
+        </div>
+        <div style="background-image: url(images/thumbs/19.jpg)">
+            <a href="images/19.jpg" rel="grounp">19</a>
+        </div>
+        <div style="background-image: url(images/thumbs/20.jpg)">
+            <a href="images/20.jpg" rel="grounp">20</a>
+        </div>
+        <div style="background-image: url(images/thumbs/21.jpg)">
+            <a href="images/21.jpg" rel="grounp">21</a>
+        </div>
+    </div>
+    <script>
+        function showPicture() {
+            var w = $("body").width();
+            var h = $("body").height();
+            var centerX = w / 2;
+            var centerY = h / 2;
+            $(".xc div").each(function () {
+                var left = Math.random() * centerX + centerX / 2;
+                var top = Math.random() * centerY + centerY / 2;
+                var rotate = Math.random() * 160 - 80;
+                $(this).css({
+                    position: "absolute",
+                    left: left,
+                    top: top,
+                    transform: "rotate(" + rotate + "deg)"
+                })
+            })
+        }
+        showPicture();
+        $(window).resize(function () {
+            showPicture();
+        })
+        $(".xc div a").fancybox({
+            openEffect: 'elastic',
+            closeEffect: 'elastic',
+            helpers: {
+                buttons: {},
+                title: { type: 'inside' },
+                thumbs: { alwaysCenter: true }
+            },
+            beforeLoad: function () {
+                this.title = $(this.element).text();
+            }
+
+        });
+    </script>
+</body>
+
+</html>
